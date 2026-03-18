@@ -55,7 +55,8 @@ collapse_z      → Crush 3D into flat 2D plane, det = 0
 
 ```
 Phase_1_Logic/
-└── matrices.py         ← Six 3×3 transformation matrices + presets dict
+├── matrices.py         ← Six 3×3 transformation matrices + presets dict
+└── demo.py             ← CLI report for determinants and preset inspection
 
 Phase_2_Blender/
 ├── scenes/
@@ -70,6 +71,19 @@ Phase_2_Blender/
 
 ## 🚀 Quick Start
 
+### Phase 1 — Python Logic
+```bash
+pip3 install -r requirements.txt
+cd Phase_1_Logic
+python3 demo.py rotate_x_90
+```
+
+Try a singular example:
+```bash
+python3 demo.py collapse_z
+```
+
+### Phase 2 — Blender Cinematic
 ```
 1. Open Blender 5.x
 2. Scripting tab → Open → Phase_2_Blender/scenes/transform.py
@@ -77,6 +91,16 @@ Phase_2_Blender/
 4. ▶ Run Script
 5. Render → Render Animation  (Ctrl+F12)
 ```
+
+---
+
+## ✅ Verification
+
+A successful Phase 1 run should:
+- print the selected preset name and full 3×3 matrix
+- show `det(M) = 1.0000` for `rotate_x_90`
+- show `det(M) = 0.0000` for `collapse_z`
+- classify `collapse_z` as a singular collapse
 
 ---
 
